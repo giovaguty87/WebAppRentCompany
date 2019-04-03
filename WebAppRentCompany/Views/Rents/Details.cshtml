@@ -1,0 +1,58 @@
+﻿@model WebAppRentCompany.Models.Rent
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Rent</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Id_vehicle)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id_vehicle)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Id_driver)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id_driver)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Amount)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Amount)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Duration)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Duration)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Id_insurance)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Id_insurance)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id_rent }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

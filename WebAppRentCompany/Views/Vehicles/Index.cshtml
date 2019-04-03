@@ -1,0 +1,75 @@
+﻿@model IEnumerable<WebAppRentCompany.Models.Vehicle>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Id_office)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Patent)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Group)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Mark)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Model)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Number_doors)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Number_passengers)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Capacity_vault)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id_office)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Patent)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Group)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Mark)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Model)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Number_doors)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Number_passengers)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Capacity_vault)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id_vehicle }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id_vehicle }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id_vehicle })
+        </td>
+    </tr>
+}
+
+</table>

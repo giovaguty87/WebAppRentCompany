@@ -4,22 +4,22 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="BGlobalModel3.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl" Alias="Self" Namespace="BGlobalModel3.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012">
         <EntityType Name="Office">
           <Key>
             <PropertyRef Name="Id_office" />
           </Key>
-          <Property Name="Id_office" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id_office" Nullable="false" StoreGeneratedPattern="Identity" Type="int" />
           <Property Name="Id_city" Type="int" />
-          <Property Name="Address" Type="varchar" MaxLength="50" />
-          <Property Name="Postal_code" Type="varchar" MaxLength="10" />
-          <Property Name="Telephone" Type="varchar" MaxLength="15" />
+          <Property Name="Code" MaxLength="15" Type="varchar" />
+          <Property Name="Address" MaxLength="50" Type="varchar" />
+          <Property Name="Postal_code" MaxLength="10" Type="varchar" />
+          <Property Name="Telephone" MaxLength="15" Type="varchar" />
         </EntityType>
         <EntityContainer Name="BGlobalModel3StoreContainer">
           <EntitySet Name="Office" EntityType="Self.Office" Schema="dbo" store:Type="Tables" />
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="BGlobalModel3" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
@@ -32,6 +32,7 @@
           <Property Name="Address" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Postal_code" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
           <Property Name="Telephone" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
+          <Property Name="Code" Type="String" MaxLength="15" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityContainer Name="BGlobalEntities7" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Offices" EntityType="Self.Office" />
@@ -45,6 +46,7 @@
           <EntitySetMapping Name="Offices">
             <EntityTypeMapping TypeName="BGlobalModel3.Office">
               <MappingFragment StoreEntitySet="Office">
+                <ScalarProperty Name="Code" ColumnName="Code" />
                 <ScalarProperty Name="Id_office" ColumnName="Id_office" />
                 <ScalarProperty Name="Id_city" ColumnName="Id_city" />
                 <ScalarProperty Name="Address" ColumnName="Address" />

@@ -55,7 +55,7 @@ namespace WebAppRentCompany.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id_office,Id_city,Address,Postal_code,Telephone")] Office office)
+        public ActionResult Create([Bind(Include = "Id_office,Id_city,Address,Postal_code,Telephone,Code")] Office office)
         {
             if (ModelState.IsValid)
             {
@@ -87,7 +87,7 @@ namespace WebAppRentCompany.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id_office,Id_city,Address,Postal_code,Telephone")] Office office)
+        public ActionResult Edit([Bind(Include = "Id_office,Id_city,Address,Postal_code,Telephone,Code")] Office office)
         {
             if (ModelState.IsValid)
             {

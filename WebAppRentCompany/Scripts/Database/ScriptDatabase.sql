@@ -1,0 +1,223 @@
+USE [master]
+GO
+/****** Object:  Database [BGlobal]    Script Date: 03/04/2019 5:19:31 p. m. ******/
+CREATE DATABASE [BGlobal] ON  PRIMARY 
+( NAME = N'BGlobal', FILENAME = N'c:\Program Files (x86)\Microsoft SQL Server\MSSQL.1\MSSQL\DATA\BGlobal.mdf' , SIZE = 3072KB , MAXSIZE = UNLIMITED, FILEGROWTH = 1024KB )
+ LOG ON 
+( NAME = N'BGlobal_log', FILENAME = N'c:\Program Files (x86)\Microsoft SQL Server\MSSQL.1\MSSQL\DATA\BGlobal_log.ldf' , SIZE = 1024KB , MAXSIZE = 2048GB , FILEGROWTH = 10%)
+GO
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [BGlobal].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+ALTER DATABASE [BGlobal] SET ANSI_NULL_DEFAULT OFF 
+GO
+ALTER DATABASE [BGlobal] SET ANSI_NULLS OFF 
+GO
+ALTER DATABASE [BGlobal] SET ANSI_PADDING OFF 
+GO
+ALTER DATABASE [BGlobal] SET ANSI_WARNINGS OFF 
+GO
+ALTER DATABASE [BGlobal] SET ARITHABORT OFF 
+GO
+ALTER DATABASE [BGlobal] SET AUTO_CLOSE OFF 
+GO
+ALTER DATABASE [BGlobal] SET AUTO_SHRINK OFF 
+GO
+ALTER DATABASE [BGlobal] SET AUTO_UPDATE_STATISTICS ON 
+GO
+ALTER DATABASE [BGlobal] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+ALTER DATABASE [BGlobal] SET CURSOR_DEFAULT  GLOBAL 
+GO
+ALTER DATABASE [BGlobal] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+ALTER DATABASE [BGlobal] SET NUMERIC_ROUNDABORT OFF 
+GO
+ALTER DATABASE [BGlobal] SET QUOTED_IDENTIFIER OFF 
+GO
+ALTER DATABASE [BGlobal] SET RECURSIVE_TRIGGERS OFF 
+GO
+ALTER DATABASE [BGlobal] SET  DISABLE_BROKER 
+GO
+ALTER DATABASE [BGlobal] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+ALTER DATABASE [BGlobal] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+ALTER DATABASE [BGlobal] SET TRUSTWORTHY OFF 
+GO
+ALTER DATABASE [BGlobal] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+ALTER DATABASE [BGlobal] SET PARAMETERIZATION SIMPLE 
+GO
+ALTER DATABASE [BGlobal] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+ALTER DATABASE [BGlobal] SET RECOVERY SIMPLE 
+GO
+ALTER DATABASE [BGlobal] SET  MULTI_USER 
+GO
+ALTER DATABASE [BGlobal] SET PAGE_VERIFY CHECKSUM  
+GO
+ALTER DATABASE [BGlobal] SET DB_CHAINING OFF 
+GO
+USE [BGlobal]
+GO
+/****** Object:  Table [dbo].[City]    Script Date: 03/04/2019 5:19:31 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[City](
+	[Id_city] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [varchar](50) NULL,
+ CONSTRAINT [PK_Ciudad] PRIMARY KEY CLUSTERED 
+(
+	[Id_city] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[Driver]    Script Date: 03/04/2019 5:19:31 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[Driver](
+	[Id_driver] [int] IDENTITY(1,1) NOT NULL,
+	[Name] [varchar](50) NULL,
+	[DNI] [varchar](50) NULL,
+	[Address] [varchar](50) NULL,
+	[Telephone] [varchar](15) NULL,
+	[Number_card] [varchar](50) NULL,
+ CONSTRAINT [PK_Conductor] PRIMARY KEY CLUSTERED 
+(
+	[Id_driver] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[Insurance]    Script Date: 03/04/2019 5:19:31 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[Insurance](
+	[Id_insurance] [int] IDENTITY(1,1) NOT NULL,
+	[Description] [varchar](50) NULL,
+ CONSTRAINT [PK_Tipo_seguro] PRIMARY KEY CLUSTERED 
+(
+	[Id_insurance] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[Office]    Script Date: 03/04/2019 5:19:31 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[Office](
+	[Id_office] [int] IDENTITY(1,1) NOT NULL,
+	[Id_city] [int] NULL,
+	[Code] [varchar](15) NULL,
+	[Address] [varchar](50) NULL,
+	[Postal_code] [varchar](10) NULL,
+	[Telephone] [varchar](15) NULL,
+ CONSTRAINT [PK_Office] PRIMARY KEY CLUSTERED 
+(
+	[Id_office] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+/****** Object:  Table [dbo].[Rent]    Script Date: 03/04/2019 5:19:31 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+CREATE TABLE [dbo].[Rent](
+	[Id_rent] [int] IDENTITY(1,1) NOT NULL,
+	[Id_vehicle] [int] NULL,
+	[Id_driver] [int] NULL,
+	[Amount] [decimal](18, 0) NULL,
+	[Duration] [int] NULL,
+	[Id_insurance] [int] NULL,
+ CONSTRAINT [PK_Alquiler] PRIMARY KEY CLUSTERED 
+(
+	[Id_rent] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+/****** Object:  Table [dbo].[Vehicle]    Script Date: 03/04/2019 5:19:31 p. m. ******/
+SET ANSI_NULLS ON
+GO
+SET QUOTED_IDENTIFIER ON
+GO
+SET ANSI_PADDING ON
+GO
+CREATE TABLE [dbo].[Vehicle](
+	[Id_vehicle] [int] IDENTITY(1,1) NOT NULL,
+	[Id_office] [int] NULL,
+	[Patent] [varchar](50) NULL,
+	[Group] [varchar](10) NULL,
+	[Mark] [varchar](15) NULL,
+	[Model] [varchar](50) NULL,
+	[Number_doors] [int] NULL,
+	[Number_passengers] [int] NULL,
+	[Capacity_vault] [varchar](50) NULL,
+ CONSTRAINT [PK_Carro] PRIMARY KEY CLUSTERED 
+(
+	[Id_vehicle] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+
+GO
+SET ANSI_PADDING OFF
+GO
+ALTER TABLE [dbo].[Office]  WITH CHECK ADD  CONSTRAINT [FK_Oficina_Ciudad] FOREIGN KEY([Id_city])
+REFERENCES [dbo].[City] ([Id_city])
+GO
+ALTER TABLE [dbo].[Office] CHECK CONSTRAINT [FK_Oficina_Ciudad]
+GO
+ALTER TABLE [dbo].[Rent]  WITH CHECK ADD  CONSTRAINT [FK_Alquiler_Carro] FOREIGN KEY([Id_vehicle])
+REFERENCES [dbo].[Vehicle] ([Id_vehicle])
+GO
+ALTER TABLE [dbo].[Rent] CHECK CONSTRAINT [FK_Alquiler_Carro]
+GO
+ALTER TABLE [dbo].[Rent]  WITH CHECK ADD  CONSTRAINT [FK_Alquiler_Conductor] FOREIGN KEY([Id_driver])
+REFERENCES [dbo].[Driver] ([Id_driver])
+GO
+ALTER TABLE [dbo].[Rent] CHECK CONSTRAINT [FK_Alquiler_Conductor]
+GO
+ALTER TABLE [dbo].[Rent]  WITH CHECK ADD  CONSTRAINT [FK_Alquiler_Tiposeguro] FOREIGN KEY([Id_insurance])
+REFERENCES [dbo].[Insurance] ([Id_insurance])
+GO
+ALTER TABLE [dbo].[Rent] CHECK CONSTRAINT [FK_Alquiler_Tiposeguro]
+GO
+ALTER TABLE [dbo].[Vehicle]  WITH CHECK ADD  CONSTRAINT [FK_Vehiculo_oficina] FOREIGN KEY([Id_office])
+REFERENCES [dbo].[Office] ([Id_office])
+GO
+ALTER TABLE [dbo].[Vehicle] CHECK CONSTRAINT [FK_Vehiculo_oficina]
+GO
+USE [master]
+GO
+ALTER DATABASE [BGlobal] SET  READ_WRITE 
+GO

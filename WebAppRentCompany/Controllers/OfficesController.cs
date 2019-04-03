@@ -13,6 +13,7 @@ namespace WebAppRentCompany.Controllers
     public class OfficesController : Controller
     {
         private BGlobalEntities7 db = new BGlobalEntities7();
+        private BGlobalEntities12 dbCities = new BGlobalEntities12();        
 
         // GET: Offices
         public ActionResult Index()
@@ -38,6 +39,14 @@ namespace WebAppRentCompany.Controllers
         // GET: Offices/Create
         public ActionResult Create()
         {
+            var cities = dbCities.City.ToList();
+
+            ViewBag.cities = cities.Select(x => new SelectListItem()
+            {
+                Text = x.Name,
+                Value = x.Id_city.ToString(),
+            });
+
             return View();
         }
 

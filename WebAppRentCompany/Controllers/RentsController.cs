@@ -13,6 +13,9 @@ namespace WebAppRentCompany.Controllers
     public class RentsController : Controller
     {
         private BGlobalEntities6 db = new BGlobalEntities6();
+        private BGlobalEntities8 dbVehicles = new BGlobalEntities8();
+        private BGlobalEntities11 dbDrivers = new BGlobalEntities11();
+        private BGlobalEntities10 dbInsurances = new BGlobalEntities10();
 
         // GET: Rents
         public ActionResult Index()
@@ -38,6 +41,30 @@ namespace WebAppRentCompany.Controllers
         // GET: Rents/Create
         public ActionResult Create()
         {
+            var vehicles = dbVehicles.Vehicles.ToList();
+
+            ViewBag.vehicles = vehicles.Select(x => new SelectListItem()
+            {
+                Text = x.Id_vehicle.ToString(),
+                Value = x.Id_vehicle.ToString(),
+            });
+
+            var drivers = dbDrivers.Drivers.ToList();
+
+            ViewBag.drivers = drivers.Select(x => new SelectListItem()
+            {
+                Text = x.Name,
+                Value = x.Id_driver.ToString(),
+            });
+
+            var insurances = dbInsurances.Insurances.ToList();
+
+            ViewBag.insurances = insurances.Select(x => new SelectListItem()
+            {
+                Text = x.Description,
+                Value = x.Id_insurance.ToString(),
+            });
+
             return View();
         }
 

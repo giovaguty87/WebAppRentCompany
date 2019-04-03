@@ -16,7 +16,7 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.Id_office, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Id_office, "Office", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.DropDownListFor(model => model.Id_office, (IEnumerable<SelectListItem>)ViewBag.offices, "--Select One--", new { @class = "form-control select-add-placeholder" })
                 @Html.ValidationMessageFor(model => model.Id_office, "", new { @class = "text-danger" })
@@ -56,23 +56,23 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Number_doors, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Number_doors, "N° Doors", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Number_doors, new { htmlAttributes = new { @class = "form-control" , required = "required"} })
+                @Html.EditorFor(model => model.Number_doors, new { htmlAttributes = new { @class = "form-control" , required = "required", @min="1"} })
                 @Html.ValidationMessageFor(model => model.Number_doors, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Number_passengers, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Number_passengers, "N° Passengers", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Number_passengers, new { htmlAttributes = new { @class = "form-control", required = "required" } })
+                @Html.EditorFor(model => model.Number_passengers, new { htmlAttributes = new { @class = "form-control", required = "required", @min="1" } })
                 @Html.ValidationMessageFor(model => model.Number_passengers, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Capacity_vault, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Capacity_vault, "Capacity vault", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Capacity_vault, new { htmlAttributes = new { @class = "form-control", required = "required" } })
                 @Html.ValidationMessageFor(model => model.Capacity_vault, "", new { @class = "text-danger" })

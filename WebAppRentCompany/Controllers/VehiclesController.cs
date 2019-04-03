@@ -70,6 +70,14 @@ namespace WebAppRentCompany.Controllers
         // GET: Vehicles/Edit/5
         public ActionResult Edit(int? id)
         {
+            var offices = dbOffices.Offices.ToList();
+
+            ViewBag.offices = offices.Select(x => new SelectListItem()
+            {
+                Text = x.Code,
+                Value = x.Id_office.ToString(),
+            });
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);

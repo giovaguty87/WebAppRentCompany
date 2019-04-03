@@ -18,17 +18,17 @@
         @Html.HiddenFor(model => model.Id_rent)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Id_vehicle, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Id_vehicle, "Vehicle", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Id_vehicle, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.Id_vehicle, (IEnumerable<SelectListItem>)ViewBag.vehicles, "--Select One--", new { @class = "form-control select-add-placeholder" })
                 @Html.ValidationMessageFor(model => model.Id_vehicle, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Id_driver, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Id_driver, "Driver", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Id_driver, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.Id_driver, (IEnumerable<SelectListItem>)ViewBag.drivers, "--Select One--", new { @class = "form-control select-add-placeholder" })
                 @Html.ValidationMessageFor(model => model.Id_driver, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -44,15 +44,15 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Duration, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Duration, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.Duration, new { htmlAttributes = new { @class = "form-control", @min="1" } })
                 @Html.ValidationMessageFor(model => model.Duration, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Id_insurance, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Id_insurance, "Insurance",htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Id_insurance, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.Id_insurance, (IEnumerable<SelectListItem>)ViewBag.insurances, "--Select One--", new { @class = "form-control select-add-placeholder" , required = "required" })
                 @Html.ValidationMessageFor(model => model.Id_insurance, "", new { @class = "text-danger" })
             </div>
         </div>

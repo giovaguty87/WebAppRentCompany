@@ -18,9 +18,9 @@
         @Html.HiddenFor(model => model.Id_vehicle)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Id_office, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.Id_office, "Office", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Id_office, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.DropDownListFor(model => model.Id_office, (IEnumerable<SelectListItem>)ViewBag.offices, "--Select One--", new { @class = "form-control select-add-placeholder" })
                 @Html.ValidationMessageFor(model => model.Id_office, "", new { @class = "text-danger" })
             </div>
         </div>

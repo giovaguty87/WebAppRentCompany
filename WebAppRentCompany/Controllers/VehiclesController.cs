@@ -43,7 +43,7 @@ namespace WebAppRentCompany.Controllers
 
             ViewBag.offices = offices.Select(x => new SelectListItem()
             {
-                Text = x.Address,
+                Text = x.Code,
                 Value = x.Id_office.ToString(),
             });
 

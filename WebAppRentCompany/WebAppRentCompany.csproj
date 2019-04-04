@@ -381,6 +381,8 @@
     <Content Include="Models\CitiesModel.edmx.diagram">
       <DependentUpon>CitiesModel.edmx</DependentUpon>
     </Content>
+    <Content Include="Documentation\PruebaConocimientosGioGutierrez.docx" />
+    <Content Include="Documentation\ASPNetMVC.PDF" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\Database\ScriptDatabase.sql">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
